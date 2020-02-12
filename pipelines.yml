@@ -1,0 +1,19 @@
+resources:
+  - name: github_demo_test
+    type: GitRepo
+    configuration:
+      path: deepikasl/VT2
+      gitProvider: deepikaGithub
+
+pipelines:
+  - name: pipeline_demo
+    steps:          
+      - name: bash_demo
+        type: Bash
+        configuration:
+          inputResources:
+            - name: github_demo_test
+        execution:
+          onExecute:
+            - echo "executing bash step..."
+            - sleep 30
